@@ -70,6 +70,8 @@ nmap ,B <Esc>:BookmarkToRoot
 
 nmap ,1 <Esc>:NERDTree /home/www/CampDoc.com<CR>
 
+au! BufRead,BufNewFile *.sass         setfiletype sass
+
 "function! PlaySound()
 "  silent! exec '!aplay ~/.vim/support/type.wav 2>/dev/null &'
 "endfunction
