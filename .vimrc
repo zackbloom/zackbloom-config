@@ -26,7 +26,62 @@ set title                " change the terminal's title
 set visualbell           " don't beep
 set noerrorbells         " don't beep
 
-let NERDTreeChDirMode=2
+set relativenumber
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
+
+function! IndentToggle()
+  if(&topstop == 2)
+    set tabstop=4
+    set shiftwidth=4
+  else
+    set tabstop=2
+    set shiftwidth=2
+  endif
+endfunc
+
+function! SpellCheck()
+  :setlocal spell spelllang=en_us
+endfunc
+
+nnoremap <C-s> :call IndentToggle()<cr>
+inoremap <C-s> :call IndentToggle()<cr>
+vnoremap <C-s> :call IndentToggle()<cr>
+
+" set undofile
+
+nnoremap j gj
+nnoremap k gk
+
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+
+nnoremap ; :
+
+" Fold HTML Tags
+nnoremap <leader>ft Vatzf
+
+" Reselect pasted text
+nnoremap <leader>v V`]
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Sort CSS Properties
+nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
+
 set equalalways
 
 set nobackup
@@ -49,6 +104,15 @@ if &t_Co > 2 || has("gui_running")
    syntax on
 endif
 
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
 set pastetoggle=<F2>
 
 cmap w!! w !sudo tee % >/dev/null
@@ -62,13 +126,6 @@ nmap ,w <Esc>:tabp<CR>
 nmap ,q <Esc>:tabfirst<CR>
 nmap ,r <Esc>:tablast<CR>
 nmap ,<tab> <Esc>:tabs<CR>
-
-nmap ,` <Esc>:NERDTreeToggle<CR>
-nmap ,~ <Esc>:NERDTreeMirror<CR>
-nmap ,b <Esc>:OpenBookmark 
-nmap ,B <Esc>:BookmarkToRoot 
-
-nmap ,1 <Esc>:NERDTree /home/www/CampDoc.com<CR>
 
 au! BufRead,BufNewFile *.sass         setfiletype sass
 au! BufRead,BufNewFile *.handlebars         setfiletype html
