@@ -26,19 +26,6 @@ set title                " change the terminal's title
 set visualbell           " don't beep
 set noerrorbells         " don't beep
 
-set relativenumber
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
-
-nnoremap <C-n> :call NumberToggle()<cr>
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
-
 nmap ,t :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
 nmap ,T :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
 
