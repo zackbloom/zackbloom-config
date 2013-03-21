@@ -39,15 +39,8 @@ nnoremap <C-n> :call NumberToggle()<cr>
 autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
 
-function! IndentToggle()
-  if(&topstop == 2)
-    set tabstop=4
-    set shiftwidth=4
-  else
-    set tabstop=2
-    set shiftwidth=2
-  endif
-endfunc
+nmap ,t :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
+nmap ,T :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
 
 function! SpellCheck()
   :setlocal spell spelllang=en_us
@@ -119,13 +112,15 @@ cmap w!! w !sudo tee % >/dev/null
 
 nmap <silent> ,/ :let @/=""<CR>
 
-nmap ,t <Esc>:CommandT<CR>
-
 nmap ,e <Esc>:tabn<CR>
 nmap ,w <Esc>:tabp<CR>
 nmap ,q <Esc>:tabfirst<CR>
 nmap ,r <Esc>:tablast<CR>
 nmap ,<tab> <Esc>:tabs<CR>
+
+nmap <C-e> :e#<CR>
+nmap <C-n> :bnext<CR>
+nmap <C-p> :bprev<CR>
 
 au! BufRead,BufNewFile *.sass         setfiletype sass
 au! BufRead,BufNewFile *.handlebars         setfiletype html
@@ -136,3 +131,5 @@ au! BufRead,BufNewFile *.handlebars         setfiletype html
 
 au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 au! BufRead,BufNewFile *.hamlpy setfiletype haml 
+
+execute pathogen#infect()
