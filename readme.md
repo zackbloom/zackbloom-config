@@ -1,6 +1,3 @@
-VIM Config
-=====
-
 To Install
 -----
 
