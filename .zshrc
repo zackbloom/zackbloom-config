@@ -35,7 +35,7 @@ rvm use ruby-1.9.3
 
 alias number='awk "'"{ print FNR "\t" $0 }"'"'
 
-alias animal="curl -s 'http://animals.ivolo.me/?index=8'"
+alias animal="curl -s 'http://animals.ivolo.me/'"
 alias fact="elinks -dump randomfunfacts.com | sed -n '/^| /p' | tr -d \|"
 alias dep="fact; deployer -u zbloom deploy:contacts_web"
 alias depprod="animal; fact; deployer  -u zbloom deploy:contacts_web,hs_env=prod"
