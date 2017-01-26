@@ -13,20 +13,10 @@ set -o vi
 unsetopt correct_all
 unsetopt sharehistory
 
-alias hubspot='fab -f ~/dev/src/workstation_setup/deployfile.py'
-
-export GITHUB_HOST='git.hubteam.com'
-
 export DYLD_LIBRARY_PATH=/usr/local/mysql-5.5.22-osx10.6-x86_64/lib
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/usr/X11/bin:/Users/zbloom/.local/bin:/usr/local/mysq/bin:/usr/local/mysql-5.5.22-osx10.6-x86_64/bin:/Users/zbloom/.local/lib/node_modules/handlebars/bin/
 export PATH=$PATH:/usr/local/Cellar/ruby/1.9.3-p194/bin
 export EDITOR=/usr/bin/vim
-
-export GITHUB_HOST='git.hubteam.com'
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-rvm use ruby-1.9.3
 
 alias number='awk "'"{ print FNR "\t" $0 }"'"'
 
@@ -52,8 +42,10 @@ bindkey -v
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-
 export PATH="/usr/local/lib/node_modules:$PATH"
+
+export GOPATH=~/go
+export PATH=~/go/bin:$PATH
 
 ###-begin-npm-completion-### #
 # npm command completion script
@@ -107,3 +99,5 @@ elif type compctl &>/dev/null; then
   compctl -K _npm_completion npm
 fi
 ###-end-npm-completion-###
+
+ssh-add ~/.ssh/id_rsa

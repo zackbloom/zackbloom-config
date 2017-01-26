@@ -106,7 +106,7 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
-set pastetoggle=<F2>
+set pastetoggle=<C-p>
 
 cmap w!! w !sudo tee % >/dev/null
 
@@ -124,6 +124,7 @@ nmap <C-p> :bprev<CR>
 
 au! BufRead,BufNewFile *.sass         setfiletype sass
 au! BufRead,BufNewFile *.handlebars         setfiletype html
+au! BufRead,BufNewFile *.pug         setfiletype jade
 "function! PlaySound()
 "  silent! exec '!aplay ~/.vim/support/type.wav 2>/dev/null &'
 "endfunction
@@ -137,3 +138,14 @@ execute pathogen#infect()
 " Comment and uncomment macros
 let @c='0i#j'
 let @u='0dlj'
+
+let g:go_fmt_command = "goimports"
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+nmap ,g <Esc>:GoRun<cr>
