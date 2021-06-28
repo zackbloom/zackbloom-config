@@ -4,6 +4,8 @@ ZSH_THEME="robbyrussell"
 
 DISABLE_AUTO_UPDATE="true"
 
+export HOMEBREW_NO_AUTO_UPDATE=1
+
 plugins=(git rails ruby)
 
 source $ZSH/oh-my-zsh.sh
@@ -31,12 +33,19 @@ alias gcam="git commit -a -m"
 alias gca="git commit -a"
 alias gcm="git commit -m"
 alias gd="git diff"
-alias gpom="git push origin master"
+alias gpom="git push origin main"
+alias gphm="git push heroku main"
 alias gpo="git push origin"
-alias glom="git pull origin master"
+alias glom="git pull origin main"
 alias glo="git pull origin"
-alias fr="fgrep -r"
-alias fri="fgrep -ri"
+alias ports="lsof -nP -iTCP -sTCP:LISTEN | grep"
+
+function fr() {
+  grep -rF --exclude-dir=node_modules "$*" .
+}
+function fri() {
+  grep -riF --exclude-dir=node_modules "$*" .
+}
 
 bindkey -v
 
@@ -101,3 +110,4 @@ fi
 ###-end-npm-completion-###
 
 ssh-add ~/.ssh/id_rsa
+bindkey "^R" history-incremental-search-backward
